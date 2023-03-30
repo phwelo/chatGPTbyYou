@@ -15,7 +15,4 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-        run: |
-          ls
-        run: pip install openai
       - run: echo "🍏 This job's status is ${{ job.status }}."
