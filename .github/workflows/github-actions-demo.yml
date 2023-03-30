@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} is working on GitHub Actions 🚀
 on: [push]
 jobs:
   ChatGPT-Fine-Tuning:
-    runs-on: ubuntu
+    runs-on: ubuntu-latest
     steps:
       - name: 🐧 Install OpenAI tools for ${{ runner.os }}...
         run: pip install openai
