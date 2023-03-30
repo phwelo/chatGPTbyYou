@@ -8,7 +8,7 @@ jobs:
       - name: 🐧 Install OpenAI tools for ${{ runner.os }}...
         run: pip install openai
       - name: 📁 Get the info to integrate to ChatGPT...
-        run: ls /home/${whoami} # as an example
+        run: ls /home/runner
       - name: 🖥️ Add the files into our GPT...
         run: openai --help
       - name: 🍏 Deploy it I suppose
@@ -19,3 +19,4 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
+      - run: whoami
