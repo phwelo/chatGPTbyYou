@@ -2,7 +2,7 @@ name: First Step to Success
 run-name: ${{ github.actor }} is working on GitHub Actions 🚀
 on: [push]
 jobs:
-  ChatGPT Fine Tuning:
+  ChatGPT-Fine-Tuning:
     runs-on: python3
     steps:
       - name: 🐧 Install OpenAI tools for ${{ runner.os }}...
