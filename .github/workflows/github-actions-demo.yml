@@ -2,8 +2,8 @@ name: First Step to Success
 run-name: ${{ github.actor }} is working on GitHub Actions 🚀
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
-    runs-on: ubuntu-latest
+  ChatGPT Fine Tuning:
+    runs-on: python3
     steps:
       - name: 🐧 Install OpenAI tools for ${{ runner.os }}...
         run: pip install openai
