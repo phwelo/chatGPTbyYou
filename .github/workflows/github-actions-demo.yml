@@ -16,10 +16,10 @@ jobs:
           pwd
           ls
       - name: 🖥️ Convert and validate jsonl...
-        run: openai tools fine_tunes.prepare_data -f sample.jsonl -q
         with:
           env:
             OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: openai tools fine_tunes.prepare_data -f sample.jsonl -q
       - name: 🤖 Integrate the content into AI
         run: openai api fine_tunes.create -t sample_prepared.jsonl -m davinci
       - name: 🍏 Deploy it I suppose
