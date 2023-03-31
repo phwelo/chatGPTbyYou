@@ -7,10 +7,11 @@ jobs:
     steps:
       - name: 🐧 Install OpenAI tools for ${{ runner.os }}...
         run: pip install openai
-      - name: 🐼 Install Pandas for OpenAI
+      - name: 🐼 Install Pandas for OpenAI...
         run: pip install openai[datalib]
-      - name: 📁 Get the info to integrate to ChatGPT...
+      - name: 📁 Clone the repo...
         uses: actions/checkout@v3
+      - name: 🔎 Information gathering...
         run: |
           pwd
           cd /home/runner/work/chatGPTbyYou/chatGPTbyYou
@@ -20,7 +21,7 @@ jobs:
           openai tools fine_tunes.prepare_data -f sample.jsonl
           openai api fine_tunes.create -t fine_tunes.prepare_data -m davinci
       - name: 🍏 Deploy it I suppose
-        uses: actions/checkout@v3
+        run: echo "hi"
       - run: openai --help
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: List files in the repository
