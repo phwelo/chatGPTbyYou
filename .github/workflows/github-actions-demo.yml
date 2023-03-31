@@ -15,7 +15,9 @@ jobs:
         name: 🔎 Apply the API key to environment...
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: echo $OPENAI_API_KEY
+        run: |
+          echo $OPENAI_API_KEY
+          echo "boop"
       - name: 🔎 Information gathering...
         run: |
           openai --help
