@@ -1,5 +1,7 @@
 name: InsightForge
-run-name: ${{ github.actor }} is working on GitHub Actions 🚀
+env:
+  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+run-name: ${{ github.actor }} has pushed ${{ github.ref }} on ${{ github.repository }} 🚀
 on: [push]
 jobs:
   ChatGPT-Fine-Tuning:
@@ -11,18 +13,12 @@ jobs:
         run: pip install openai[datalib]
       - name: 📁 Clone the repo...
         uses: actions/checkout@v3
-      - name: 🖥️ Convert and validate jsonl...
+      - name: ↕️ Convert and validate jsonl...
         run: openai tools fine_tunes.prepare_data -f sample.jsonl -q
       - name: 🤖 Integrate the content into AI
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: openai api fine_tunes.create -t sample_prepared.jsonl -m davinci
-      - name: 🍏 Deploy it I suppose
-        run: echo "hi"
-      - run: openai --help
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - name: List files in the repository
+      - name: 📁 List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+      - run: echo "🚦 This job's status is ${{ job.status }}."
       - run: whoami
