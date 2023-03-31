@@ -1,4 +1,4 @@
-name: First Step to Success
+name: InsightForge
 run-name: ${{ github.actor }} is working on GitHub Actions 🚀
 on: [push]
 jobs:
@@ -8,9 +8,11 @@ jobs:
       - name: 🐧 Install OpenAI tools for ${{ runner.os }}...
         run: pip install openai
       - name: 📁 Get the info to integrate to ChatGPT...
-        run: ls /home/runner/work
-      - name: 🖥️ Add the files into our GPT...
-        run: openai --help
+        run: cat ./sample.jsonl
+      - name: 🖥️ Convert and validate jsonl...
+        run: |
+          openai tools fine_tunes.prepare_data -f sample.jsonl
+          openai api fine_tunes.create -t fine_tunes.prepare_data -m davinci
       - name: 🍏 Deploy it I suppose
         uses: actions/checkout@v3
       - run: openai --help
