@@ -11,19 +11,11 @@ jobs:
         run: pip install openai[datalib]
       - name: 📁 Clone the repo...
         uses: actions/checkout@v3
-      - shell: bash
-        name: 🔎 Apply the API key to environment...
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-        run: echo $OPENAI_API_KEY
-      - name: 🔎 Information gathering...
-        run: |
-          openai --help
-          pwd
-          ls
       - name: 🖥️ Convert and validate jsonl...
         run: openai tools fine_tunes.prepare_data -f sample.jsonl -q
       - name: 🤖 Integrate the content into AI
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: openai api fine_tunes.create -t sample_prepared.jsonl -m davinci
       - name: 🍏 Deploy it I suppose
         run: echo "hi"
