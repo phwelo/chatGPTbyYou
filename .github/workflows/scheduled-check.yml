@@ -1,0 +1,9 @@
+on:
+    schedule:
+      - cron: '0 * * * *'
+jobs:
+    Pickup-Fine-Tune-Jobs:
+        runs-on: ubuntu-latest
+        steps:
+        - name: 🐧 Install OpenAI tools for ${{ runner.os }}...
+          run: pip install openai
