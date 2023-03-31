@@ -1,6 +1,9 @@
-name: InsightForge
+name: InsightForge GPT Fine-Tuner
 env:
   OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+  FILENAME: tuning.jsonl
+  PREPARED: tuning_prepared.jsonl
+  MODEL: davinci
 run-name: ${{ github.actor }} has pushed ${{ github.ref }} on ${{ github.repository }} 🚀
 on: [push]
 jobs:
@@ -14,11 +17,7 @@ jobs:
       - name: 📁 Clone the repo...
         uses: actions/checkout@v3
       - name: ↕️ Convert and validate jsonl...
-        run: openai tools fine_tunes.prepare_data -f sample.jsonl -q
+        run: openai tools fine_tunes.prepare_data -f $FILENAME -q
       - name: 🤖 Integrate the content into AI
-        run: openai api fine_tunes.create -t sample_prepared.jsonl -m davinci
-      - name: 📁 List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-      - run: echo "🚦 This job's status is ${{ job.status }}."
-      - run: whoami
+        run: openai api fine_tunes.create -t $PREPARED -m $MODEL --suffix "${{ github.ref }}"
+      - run: echo "🚦 This job's final status is ${{ job.status }}."

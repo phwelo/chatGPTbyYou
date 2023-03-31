@@ -1,3 +1,7 @@
+name: InsightForge Job Checker
+run-name: Checking on fine tune progress for ${{ github.ref }} on ${{ github.repository }} 🚀
+env:
+    OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 on:
     schedule:
       - cron: '0 * * * *'
@@ -7,3 +11,5 @@ jobs:
         steps:
         - name: 🐧 Install OpenAI tools for ${{ runner.os }}...
           run: pip install openai
+        - name: 🚀 Checking on fine tune progress for ${{ github.ref }} on ${{ github.repository }} 🚀
+          run: openai api fine_tunes.list
