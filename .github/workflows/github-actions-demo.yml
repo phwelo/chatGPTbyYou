@@ -22,9 +22,6 @@ jobs:
             OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       - name: 🤖 Integrate the content into AI
         run: openai api fine_tunes.create -t sample_prepared.jsonl -m davinci
-        with:
-          env:
-            OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       - name: 🍏 Deploy it I suppose
         run: echo "hi"
       - run: openai --help
