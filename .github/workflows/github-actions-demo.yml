@@ -14,12 +14,11 @@ jobs:
       - name: 🔎 Information gathering...
         run: |
           pwd
-          cd /home/runner/work/chatGPTbyYou/chatGPTbyYou
           ls
       - name: 🖥️ Convert and validate jsonl...
-        run: |
-          openai tools fine_tunes.prepare_data -f sample.jsonl
-          openai api fine_tunes.create -t fine_tunes.prepare_data -m davinci
+        run: openai tools fine_tunes.prepare_data -f sample.jsonl
+      - name: 🤖 Integrate the content into AI
+        run: openai api fine_tunes.create -t fine_tunes.prepare_data -m davinci
       - name: 🍏 Deploy it I suppose
         run: echo "hi"
       - run: openai --help
