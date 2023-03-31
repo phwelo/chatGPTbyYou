@@ -12,7 +12,8 @@ jobs:
       - name: 📁 Get the info to integrate to ChatGPT...
         run: |
           pwd
-          ls /home/
+          cd /home/runner/work/chatGPTbyYou/
+          ls
       - name: 🖥️ Convert and validate jsonl...
         run: |
           openai tools fine_tunes.prepare_data -f sample.jsonl
