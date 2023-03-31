@@ -16,9 +16,9 @@ jobs:
           pwd
           ls
       - name: 🖥️ Convert and validate jsonl...
-        run: openai tools fine_tunes.prepare_data -f sample.jsonl
+        run: openai tools fine_tunes.prepare_data -f .\sample.jsonl -q
       - name: 🤖 Integrate the content into AI
-        run: openai api fine_tunes.create -t fine_tunes.prepare_data -m davinci
+        run: openai api fine_tunes.create -t sample_prepared.jsonl -m davinci
       - name: 🍏 Deploy it I suppose
         run: echo "hi"
       - run: openai --help
