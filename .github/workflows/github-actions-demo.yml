@@ -10,7 +10,9 @@ jobs:
           pip install openai
           pip install openai[datalib]
       - name: 📁 Get the info to integrate to ChatGPT...
-        run: ls ..
+        run: |
+          pwd
+          ls /home/
       - name: 🖥️ Convert and validate jsonl...
         run: |
           openai tools fine_tunes.prepare_data -f sample.jsonl
