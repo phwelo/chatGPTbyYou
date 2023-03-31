@@ -6,13 +6,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 🐧 Install OpenAI tools for ${{ runner.os }}...
-        run: |
-          pip install openai
-          pip install openai[datalib]
+        run: pip install openai
+      - name: 🐼 Install Pandas for OpenAI
+        run pip install openai[datalib]
       - name: 📁 Get the info to integrate to ChatGPT...
         run: |
           pwd
-          cd /home/runner/work/chatGPTbyYou/
+          cd /home/runner/work/chatGPTbyYou/chatGPTbyYou
           ls
       - name: 🖥️ Convert and validate jsonl...
         run: |
