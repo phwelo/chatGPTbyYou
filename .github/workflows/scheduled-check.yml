@@ -14,7 +14,7 @@ jobs:
         - name: 🚀 Checking on fine tune progress for ${{ github.ref }} on ${{ github.repository }} 🚀
           run: openai api fine_tunes.list > fine_tunes.json
         - name: ⬆️ Uploading the current OpenAI status of our fine tune jobs
-          uses: actions/upload-artifact@v2
+          uses: actions/upload-artifact@v3
           with:
             name: fine_tunes.json
             path: fine_tunes.json
