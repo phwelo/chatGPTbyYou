@@ -21,3 +21,4 @@ jobs:
       - name: 🤖 Integrate the content into AI
         run: openai api fine_tunes.create -t $PREPARED -m $MODEL --suffix "${{ github.ref }}"
       - run: echo "🚦 This job's final status is ${{ job.status }}."
+      
