@@ -20,5 +20,5 @@ jobs:
         run: openai tools fine_tunes.prepare_data -f $FILENAME -q
       - name: 🤖 Integrate the content into AI
         run: openai api fine_tunes.create -t $PREPARED -m $MODEL --suffix "${{ github.ref }}"
-      - run: echo "🚦 This job's final status is ${{ job.status }}."
-      
+      - name: 🚦 This job's final status is ${{ job.status }}.
+        run: echo "🚦 This job's final status is ${{ job.status }}."
